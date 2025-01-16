@@ -70,7 +70,9 @@ const SignUp = () => {
 
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl mx-auto">
             <h3 className="text-3xl ml-9 font-bold">Sign Up Now</h3>
+            
             <form onSubmit={handleSignUp} className="card-body">
+                
                 <div className="form-control">
                     <label className="label">
                         <span className="label-text">Email</span>
@@ -84,6 +86,7 @@ const SignUp = () => {
                     </label>
 
                     <input
+                        /* ekhane show korar  jonnno type ey ternary Function use kora hoise */
                         type={showPassword ? 'text' : 'password'}
                         name="password"
                         placeholder="password"
@@ -108,7 +111,10 @@ const SignUp = () => {
 
                 <div className="form-control">
                     <label className="label justify-start cursor-pointer">
-                        <input type="checkbox" name="terms"  className="checkbox" />
+                        <input type="checkbox" 
+                        /* ekhane terms dewa lagbe name er moddhe */
+                        name="terms"  
+                        className="checkbox" />
                         <span className="label-text ml-2">Accept Our Terms and Conditions</span>
 
                     </label>
