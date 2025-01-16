@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const SignUp = () => {
     const [errorMessage , setErrorMessage] = useState('');
+    const [success , setSuccess] = useState(false);
 
     const handleSignUp = (e) => {
         //For Removing the reload function
@@ -16,19 +17,35 @@ const SignUp = () => {
         console.log('Email : ', email)
         console.log('Password : ', password)
 
+        //password length Validation
+        if(password.length < 6){
+            setErrorMessage('Password should be 6 characters or Longer');
+            return;
+        }
+
+        //Password Validations
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
+        if(!passwordRegex.test(password)){
+            setErrorMessage('Password must be at least 6 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (@, $, !, %, *, ?, &).');
+            return;
+        }
+
         //Reset error and status
         setErrorMessage('');
+        setSuccess(false);
 
         //Firebase Setup
 
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 console.log(result.user)
+                setSuccess(true);
 
             })
             .catch(error => {
                 console.log('ERROR', error.message)
                 setErrorMessage(error.message)
+                setSuccess(false);
 
             })
 
@@ -63,8 +80,14 @@ const SignUp = () => {
                         </div>
                     </form>
 
+                    {/* Display Error Message */}
                     {
                         errorMessage && <p className="text-red-300">{errorMessage}</p>
+                    }
+
+                    {/* Display Success Message */}
+                    {
+                        success && <p className="text-green-600">Sign up is Successful.</p>
                     }
 
                 </div>
