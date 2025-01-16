@@ -91,6 +91,7 @@ const SignUp = () => {
                         required />
 
                     <button
+                        /* Did the icon part here */
                         onClick={() => setShowPassword(!showPassword)}
                         className="btn btn-xs absolute right-2 bottom-11">
                         {
