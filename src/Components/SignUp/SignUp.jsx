@@ -1,7 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import auth from "../Firebase/firebase.init";
+import { useState } from "react";
 
 const SignUp = () => {
+    const [errorMessage , setErrorMessage] = useState('');
 
     const handleSignUp = (e) => {
         //For Removing the reload function
@@ -14,6 +16,9 @@ const SignUp = () => {
         console.log('Email : ', email)
         console.log('Password : ', password)
 
+        //Reset error and status
+        setErrorMessage('');
+
         //Firebase Setup
 
         createUserWithEmailAndPassword(auth, email, password)
@@ -22,7 +27,8 @@ const SignUp = () => {
 
             })
             .catch(error => {
-                console.log('ERROR', error)
+                console.log('ERROR', error.message)
+                setErrorMessage(error.message)
 
             })
 
@@ -53,9 +59,14 @@ const SignUp = () => {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary">Sign Up</button>
                         </div>
                     </form>
+
+                    {
+                        errorMessage && <p className="text-red-300">{errorMessage}</p>
+                    }
+
                 </div>
        
         
