@@ -1,13 +1,29 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 import auth from "../Firebase/firebase.init";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
 
+    //use ref function add kora hoise
+    const emailRef = useRef();
 
+    //Forget PAssword er handle ekhane hoise
+    const handleForgetPassword = () => {
+        console.log('get me a email password',emailRef.current.value)
+        const email = emailRef.current.value;
+        
+        if (!email) {
+            console.log('Please provide me a valid Email Address ')
+        } else {
+            sendPasswordResetEmail(auth, email)
+            .then(() => {
+                alert('Password Email sent Please check Your email Kindly')
+            })
+        }
+    }
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -53,7 +69,8 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            {/* Ekhane ref use kora hoise karon email ref newa hoise  */}
+                            <input ref={emailRef} type="email" name="email" placeholder="Email" className="input input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -61,7 +78,11 @@ const Login = () => {
                             </label>
                             <input type="password" name="password"
                                 placeholder="password" className="input input-bordered" required />
-                            <label className="label">
+                            
+                            {/* EKhane Handle Function ta call kora hoise */}
+
+                            <label onClick={handleForgetPassword}
+                             className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
                         </div>

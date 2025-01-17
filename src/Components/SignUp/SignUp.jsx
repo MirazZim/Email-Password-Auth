@@ -78,7 +78,7 @@ const SignUp = () => {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                    <input type="email" name="email" placeholder="Email" className="input input-bordered" required />
                 </div>
 
                 <div className="form-control relative">
@@ -90,7 +90,7 @@ const SignUp = () => {
                         /* ekhane show korar  jonnno type ey ternary Function use kora hoise */
                         type={showPassword ? 'text' : 'password'}
                         name="password"
-                        placeholder="password"
+                        placeholder="Password"
                         className="input input-bordered"
                         required />
 
