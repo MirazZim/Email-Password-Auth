@@ -10,19 +10,19 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        console.log(email,password)
-        
+        console.log(email, password)
+
 
         //Create user with email and password using firebase
         createUserWithEmailAndPassword(auth, email, password)
-        .then(result => {
-            console.log(result.user)
-           
-        })
-        .catch(error => {
-            console.log('ERROR', error)
-            
-        })
+            .then(result => {
+                console.log(result.user)
+
+            })
+            .catch(error => {
+                console.log('ERROR', error)
+
+            })
     }
 
     return (
@@ -40,7 +40,7 @@ const Register = () => {
                         <path
                             d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                     </svg>
-                    <input type="email"  name="email" className="grow" placeholder="Email" />
+                    <input type="email" name="email" className="grow" placeholder="Email" />
                 </label>
 
                 <br />
@@ -56,10 +56,10 @@ const Register = () => {
                             d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                             clipRule="evenodd" />
                     </svg>
-                    <input type="password" placeholder="Password" name="password" className="grow"  />
+                    <input type="password" placeholder="Password" name="password" className="grow" />
                 </label>
-                    <br />
-                    <button className="btn btn-accent btn-wide">Login</button>
+                <br />
+                <button className="btn btn-accent btn-wide">Login</button>
             </form>
             <br />
         </div>
