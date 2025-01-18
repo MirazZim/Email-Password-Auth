@@ -7,7 +7,7 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [success, setSuccess] = useState(false);
 
-    //use ref function add kora hoise
+    //use ref function add kora hoisegi
     const emailRef = useRef();
 
     //Forget PAssword er handle ekhane hoise
